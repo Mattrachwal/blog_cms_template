@@ -10,7 +10,7 @@ module.exports = [
         path: '/',
         handler: (request, h) => {
 
-            return h.view('index');
+            return h.view('index',{title:"The Test Title"});
         }
     },
 
