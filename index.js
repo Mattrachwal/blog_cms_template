@@ -2,4 +2,5 @@
 
 const app = require('./app');
 
-app.startServer();
+app.servers.api.startServer();
+app.servers.socket_io.startServer();

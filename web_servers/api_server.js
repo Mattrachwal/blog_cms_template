@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const Hapi = require('hapi');
+const Server = require('./server');
 const Path = require('path');
 const Hoek = require('hoek');
 const Handlebars = require('handlebars');
@@ -9,39 +9,15 @@ const Inert = require('inert');
 const Bcrypt = require('bcrypt');
 const HapiAuthBasic = require('hapi-auth-basic');
 
-const Routes = require('./routes/routes');
+const Routes = require('../routes/routes');
 
-class AppServer {
-
-    constructor(config) {
-        this.config = config;
-        this.server = Hapi.server({
-            port: this.config.port,
-            host: this.config.host,
-        });
+class APIServer extends Server {
+    constructor (config) {
+        super(config);
     }
 
-    /**
-     * Add server types here in order to manage multiple Hapi servers. This was created in order to deal with Hapi v17
-     * removing "server connections" so now this just manages servers instead of connections.
-     * @returns {Promise.<void>}
-     */
+
     async startServer() {
-        let type = this.config.type;
-        if (type === 'api') {
-            this._initAPIServer();
-                console.log(`Server with type: ${type} running at: ${this.server.info.uri}`);
-        } else if (type === 'chat') {
-            this._initChatServer();
-                console.log(`Server with type: ${type} running at: ${this.server.info.uri}`);
-        } else {
-            console.log('Server with type: ' + type + ' is trying to initiate?');
-        }
-
-
-    }
-
-    async _initAPIServer () {
         // var hash = Bcrypt.hashSync("sooyeon", 10);
         // console.log(hash);
 
@@ -86,21 +62,7 @@ class AppServer {
         });
         await this.server.route(Routes);
         await this.server.start();
-
     }
-
-    async _initChatServer () {
-        io.on('connection', function (socket) {
-
-            socket.emit('Oh hii!');
-
-            socket.on('burp', function () {
-                socket.emit('Excuse you!');
-            });
-        });
-    }
-
 }
 
-
-module.exports = AppServer;
+module.exports = APIServer;

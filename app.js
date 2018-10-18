@@ -5,17 +5,20 @@
 
 // require files for app
 const config = require('./config');
-const Server = require('./server');
+const APIServer = require('./web_servers/api_server');
+const SocketIOServer = require('./web_servers/socketio_server');
 //const Mongoose = require('mongoose');
 
 // ===============================
 // == SERVICES
 // ===============================
 
-
+const app = {};
 // ====================================================================
-// == Start app
-const app = new Server(config);
+// == Manage Servers
+app.servers = {};
+app.servers.api = new APIServer(config.servers.api);
+app.servers.socket_io = new SocketIOServer(config.servers.chat);
 
 // ====================================================================
 // == Start Mongo connection
