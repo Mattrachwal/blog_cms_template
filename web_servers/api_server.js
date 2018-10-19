@@ -62,6 +62,8 @@ class APIServer extends Server {
         });
         await this.server.route(Routes);
         await this.server.start();
+        console.log(`Server with type: ${this.config.type} running at: ${this.server.info.uri}`);
+
     }
 }
 

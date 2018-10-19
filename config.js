@@ -14,7 +14,10 @@ module.exports = {
         chat: {
             port: 3001,
             host: 'localhost',
-            type: 'chat'
+            type: 'chat',
+            allowedOrigins: "*:*"
+
+            // allowedOrigins: ["http://localhost:3000", "http://127.0.0.1:3000"]
         }
     }
 };

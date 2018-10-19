@@ -1,0 +1,23 @@
+<script src="http://localhost:3001/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://localhost:3001', {
+        path: '/chat-server'
+    });
+
+    document.getElementById("send-message").onclick = function () {
+        var message = document.getElementById("message-box").value;
+        socket.emit('chat message', message);
+    };
+</script>
+
+<div id="chat-container">
+    <ul id="message-container">
+
+    </ul>
+    <form>
+        <textarea id="message-box" rows="4" cols="50">
+            Enter Message Here...
+        </textarea>
+        <button id="send-message" type="button">send</button>
+    </form>
+</div>
