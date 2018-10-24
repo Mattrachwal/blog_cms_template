@@ -16,22 +16,10 @@ module.exports = [
 
     {
         method: 'GET',
-        path: '/test',
+        path: '/wereIn',
         handler: (request, h) => {
 
             return 'test route';
-        }
-    },
-
-    {
-        method: 'GET',
-        path: '/loggedIn',
-        options: {
-            auth: 'simple'
-        },
-        handler: function (request, h) {
-
-            return 'welcome';
         }
     }
 

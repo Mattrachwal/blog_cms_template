@@ -12,9 +12,9 @@
     "bcrypt": "^3.0.0",
     "handlebars": "^4.0.12",
     "hapi": "^17.5.4",
-    "hapi-auth-basic": "^5.0.0",
+    "hapi-auth-cookie": "^9.0.0",
     "inert": "^5.1.0",
-    "socket.io": "^2.1.1",
+    "mongoose": "^5.3.4",
     "vision": "^5.4.0"
   }
 }

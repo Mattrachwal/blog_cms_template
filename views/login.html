@@ -1,0 +1,24 @@
+<div id="login-form">
+
+    <form id="login" method="POST">
+        <input placeholder="email" type="text" name="email" id="email">
+        <input placeholder="password" type="password" name="password" id="password">
+        <div id="login-button">Login</div>
+
+        <p>Not registered? <a href="/sign-up">sign up here</a></p>
+
+    </form>
+</div>
+<script>
+
+    document.getElementById("sign-up-button").onclick = function() {
+        document.getElementById('sign-up').submit();
+    };
+
+    document.onkeypress = (e) => {
+        if(e.keyCode == 13) {
+            document.getElementById('sign-up').submit();
+        }
+    };
+
+</script>

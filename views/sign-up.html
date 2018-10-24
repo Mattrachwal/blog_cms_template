@@ -1,0 +1,37 @@
+<div id="login-form">
+
+    <form id="sign-up" method="POST">
+
+        <input placeholder="name" type="text" name="name" id="name">
+        <input placeholder="email" type="text" name="email" id="email">
+        <input placeholder="confirm email" type="text" name="email-confirm" id="email-confirm">
+        <input placeholder="password" type="password" name="password" id="password">
+        <input placeholder="confirm password" type="password" name="password-confirm" id="password-confirm">
+
+        <div id="sign-up-button">Sign-up</div>
+
+        <p>Have an account? <a href="/login">Login</a></p>
+
+    </form>
+
+    {{#if errors}}
+    <p>ERRORS------</p>
+    <p>{{errors}}</p>
+    <p>------------</p>
+    {{/if}}
+
+</div>
+
+<script>
+
+    document.getElementById("sign-up-button").onclick = function() {
+        document.getElementById('sign-up').submit();
+    };
+
+    document.onkeypress = (e) => {
+        if(e.keyCode == 13) {
+            document.getElementById('sign-up').submit();
+        }
+    };
+
+</script>
